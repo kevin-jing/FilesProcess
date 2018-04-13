@@ -1,3 +1,4 @@
+*.manifest
 *.pdb
 *.exe
 *.suo
