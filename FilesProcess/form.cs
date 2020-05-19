@@ -171,7 +171,7 @@ namespace FilesProcessApp
             }
 
             btChange.Enabled = false;
-            changeFileName();
+//            changeFileName();
             replaceFileName();
             btChange.Enabled = true;
 
@@ -195,7 +195,7 @@ namespace FilesProcessApp
 
             foreach (string fileName in lbFileMatched.Items)
             {
-                FileInfo file = new FileInfo(System.IO.Path.Combine(dir, fileName));
+                FileInfo file = new FileInfo(Path.Combine(dir, fileName));
                 string mid;
                 if (right != ".*")
                     mid = fileName.Substring(
@@ -214,7 +214,7 @@ namespace FilesProcessApp
                 else
                     newFileName = tbLeftNew.Text + mid + 
                         fileName.Remove(0, fileName.LastIndexOf("."));
-                file.MoveTo(System.IO.Path.Combine(file.DirectoryName, newFileName));
+                file.MoveTo(Path.Combine(file.DirectoryName, newFileName));
             }
         }
 
@@ -225,11 +225,11 @@ namespace FilesProcessApp
 
             foreach (string fileName in lbFileMatched.Items)
             {
-                FileInfo file = new FileInfo(System.IO.Path.Combine(dir, fileName));
+                FileInfo file = new FileInfo(Path.Combine(dir, fileName));
                 StringBuilder sb = new StringBuilder(fileName);
                 sb.Replace(tbFind.Text, tbReplace.Text);
                 string newFileName = sb.ToString();
-                file.MoveTo(System.IO.Path.Combine(file.DirectoryName, newFileName));
+                file.MoveTo(Path.Combine(file.DirectoryName, newFileName));
             }
         }
 
@@ -484,7 +484,6 @@ namespace FilesProcessApp
                 left = fn.Substring(0, position);
                 right = fn.Substring(position);
                 nn = left + textBoxInserted.Text + right;
-                int i = 0;
 
                 File.Move(on, Path.Combine(dir, nn));
 
